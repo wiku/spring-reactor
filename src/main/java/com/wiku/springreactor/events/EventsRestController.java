@@ -1,6 +1,8 @@
 package com.wiku.springreactor.events;
 
 import com.wiku.springreactor.services.*;
+import com.wiku.springreactor.services.disk.DiskWritingService;
+import com.wiku.springreactor.utils.AsyncTaskWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,7 @@ import reactor.core.publisher.Mono;
 @RestController public class EventsRestController
 {
 
-    @Autowired private MessageTransformingService logMessageGenerator;
+    @Autowired private LogMessageFactoryService logFactoryService;
 
     @Autowired private DiskWritingService diskWritingService;
 
@@ -32,7 +34,7 @@ import reactor.core.publisher.Mono;
 
     private Mono<LogMessage> getLogMessageWithText( @RequestBody EventMessage event )
     {
-        return taskWrapper.async(() -> logMessageGenerator.handleMessage(event.getText()));
+        return taskWrapper.async(() -> logFactoryService.createLogMessage(event.getText()));
     }
 
     private Mono<LogMessage> getRandomNumberLogMessage( @RequestBody EventMessage event )

@@ -3,10 +3,10 @@ package com.wiku.springreactor.services;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
-@Service public class MessageTransformingService
+@Service public class LogMessageFactoryService
 {
 
-    public LogMessage handleMessage( String message )
+    public LogMessage createLogMessage( String message )
     {
         System.out.println(Thread.currentThread().getName() + ": First service received message: " + message);
         sleepForRandomTime();

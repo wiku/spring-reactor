@@ -1,6 +1,7 @@
-package com.wiku.springreactor.services;
+package com.wiku.springreactor.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
@@ -8,7 +9,7 @@ import reactor.core.scheduler.Schedulers;
 
 import java.util.concurrent.Callable;
 
-@Service
+@Component
 public class AsyncTaskWrapper
 {
     @Autowired

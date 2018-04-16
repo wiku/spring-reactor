@@ -17,7 +17,6 @@ import java.util.concurrent.Executors;
 public class SpringReactorApplication
 {
 
-
     public static void main( String[] args )
     {
         SpringApplication.run(SpringReactorApplication.class, args);
