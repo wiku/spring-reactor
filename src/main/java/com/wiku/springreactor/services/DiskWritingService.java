@@ -19,7 +19,7 @@ public class DiskWritingService
         try
         {
             Files.write(Paths.get(OUTPUT_PATH), stringToWrite.getBytes("UTF-8"), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
-            System.out.println("New line written to logfile: " + stringToWrite);
+            System.out.println(Thread.currentThread().getName() +": New line written to logfile: " + stringToWrite);
         }
         catch( IOException e )
         {

@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
+
+import java.util.concurrent.Executors;
 
 @SpringBootApplication
 @ComponentScan
@@ -19,5 +23,10 @@ public class SpringReactorApplication
         SpringApplication.run(SpringReactorApplication.class, args);
     }
 
+    @Bean
+    public Scheduler asyncScheduler()
+    {
+        return Schedulers.fromExecutor(Executors.newFixedThreadPool(128));
+    }
 
 }

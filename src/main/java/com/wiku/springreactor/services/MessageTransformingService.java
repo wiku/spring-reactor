@@ -2,26 +2,28 @@ package com.wiku.springreactor.services;
 
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
-@Service
-public class MessageTransformingService
+import java.util.Random;
+@Service public class MessageTransformingService
 {
 
-
-    public LogMessage handleMessage(String message)
+    public LogMessage handleMessage( String message )
     {
-        System.out.println("First service received message: " + message);
-        sleep(1000l);
-        LogMessage firstServiceResult = new LogMessage(message,
-                System.currentTimeMillis(),
-                UUID.randomUUID().toString());
-        System.out.println("First service returning result " + firstServiceResult);
+        System.out.println(Thread.currentThread().getName() + ": First service received message: " + message);
+        sleepForRandomTime();
+        LogMessage firstServiceResult = new LogMessage(message, System.currentTimeMillis());
+        System.out.println(Thread.currentThread().getName() + ": First service returning result " + firstServiceResult);
         return firstServiceResult;
 
     }
 
-    private void sleep(long time)
+    private void sleepForRandomTime()
+    {
+        Random random = new Random();
+        int sleepTime = random.nextInt(2000);
+        sleep(sleepTime);
+    }
+
+    private void sleep( long time )
     {
         try
         {

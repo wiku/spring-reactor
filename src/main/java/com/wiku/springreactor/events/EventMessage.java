@@ -1,4 +1,4 @@
-package com.wiku.springreactor;
+package com.wiku.springreactor.events;
 
 import lombok.Data;
 

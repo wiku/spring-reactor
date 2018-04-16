@@ -9,5 +9,4 @@ public class LogMessage
 {
     private String message;
     private long timestamp;
-    private String randomString;
 }
